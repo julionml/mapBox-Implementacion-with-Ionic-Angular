@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { MenuController } from '@ionic/angular';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { MapService } from 'src/app/mapbox-servive.service';
-import * as  Mapboxgl from 'mapbox-gl'
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -11,35 +11,38 @@ import * as  Mapboxgl from 'mapbox-gl'
 })
 
 export class MapPage implements OnInit {
-
-
-  public currentLatitude: any = '';
-  public currentLongitude: any = '';
-  public mapa: Mapboxgl.Map;
-
-
+  compare$: Observable<string>;
   constructor(
+    private store: Store<{ compare: string }>,
     private map: MapService,
-    private geolocation: Geolocation,
     private menu: MenuController
   ) {
-
+    this.compare$ = store.select('compare');
   }
 
   ngOnInit() {
     this.map.buildMap();
   }
-  
-public generatePins(){
-  this.map.addPins();
-}
+
+  public generatePins() {
+    this.map.menuIndex= "You choose the use case  number 1";
+    this.map.getOption()
+    this.map.addPins();
+    
+  }
+  public centerPins() {
+    this.map.fitZoom();
+    this.map.menuIndex='You choose the use case  number 4';
+    this.map.getOption()
+  }
+  public gotoCurrentPosition(){
+    this.map.flytoCurrentPosition();
+  }
   openFirst() {
     this.menu.enable(true, 'first');
     this.menu.open('first');
   }
-public centerPins(){
-  this.map.fitZoom();
-}
+  
   openEnd() {
     this.menu.open('end');
   }
@@ -48,7 +51,7 @@ public centerPins(){
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
-
-
   
+
+
 }

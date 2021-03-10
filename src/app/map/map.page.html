@@ -2,34 +2,47 @@
   <ion-header>
     <ion-toolbar translucent>
       <ion-title>Use cases</ion-title>
+      
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list>
-      <ion-item>
+    
+    <ion-list >
+      <ion-item > 
+        
         <ion-icon name="locate" slot="start"></ion-icon>
-        <ion-label>Load pins on map</ion-label>
-        <ion-button (click)="generatePins()">Load pins on map</ion-button>
+        <ion-label>1.Load pins on map</ion-label>
+        <ion-button (click)="generatePins()">Load</ion-button>
       </ion-item>
       <ion-item>
         <ion-icon name="navigate" slot="start"></ion-icon>
-        <ion-label>Zoom in/out specific pin</ion-label>
+        <ion-label>2.Zoom in/out<br> specific pin</ion-label>
       </ion-item>
       <ion-item>
         <ion-icon name="map" slot="start"></ion-icon>
-        <ion-label>Change/Replace pins on map on user-selections</ion-label>
+        <ion-label>3.Change/Replace<br> pins on map<br> on user-selections</ion-label>
       </ion-item>
       <ion-item>
+        
         <ion-icon  name="search" slot="start"></ion-icon>
-        <ion-label>Auto Zoom to center map on a group of pins</ion-label>
-        <ion-button (click)="centerPins()">Fit to map</ion-button>
+        <ion-label>4.Auto Zoom to<br> center map on a group<br> of pins</ion-label>
+        <ion-button (click)="centerPins()">Center Pins</ion-button>
       </ion-item>
       <ion-item>
         <ion-icon name="information-circle" slot="start"></ion-icon>
-        <ion-label>pin information</ion-label>
+        <ion-label>5.Pin information</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="locate" slot="start"></ion-icon>
+        <ion-label>6.Current<br> Position</ion-label>
+        <ion-button (click)="gotoCurrentPosition()">Get Position</ion-button>
       </ion-item>
       
     </ion-list>
+    <ion-item>
+      
+      
+    </ion-item>
   </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
@@ -39,6 +52,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>Map Test</ion-title>
+      <ion-label slot="end"> <strong>{{( compare$ | async )?.compareOption}}</strong></ion-label>
     </ion-toolbar>
   </ion-header>
   <body>

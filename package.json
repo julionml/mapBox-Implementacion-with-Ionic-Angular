@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.0",
     "@ionic-native/geolocation": "^5.31.1",
     "@ionic/angular": "^5.5.2",
+    "@ngrx/store": "^11.0.1",
     "@types/geojson": "^7946.0.7",
     "@types/mapbox-gl": "^2.1.0",
     "geolocation": "^0.2.0",
